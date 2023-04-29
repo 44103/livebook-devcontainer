@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  livebook:
+    build: .
+    working_dir: /workdir
+    command: sleep infinity
+    volumes:
+      - ~/.gitconfig:/home/root/.gitconfig:ro
+      - ..:/workdir
+    ports:
+      - "8080:8080"
+    environment:
+      - LIVEBOOK_TOKEN_ENABLED=false
+      - LIVEBOOK_HOME=/workdir
+      - LIVEBOOK_APPS_PATH=workdir
